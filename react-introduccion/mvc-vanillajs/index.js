@@ -29,12 +29,12 @@ app.addComponent({
         dogs:[]
     },
     view(model){
-        /*
+        
         return `
             <ul clas="dogs">
                 ${model.dogs.map(dog=>`<li>${dogTempleate(dog)}</li>`).join('')}
             </ul>
-        `;*/
+        `;/*
         return `
             <ul class="dogs">
             ${model.dogs.map(dog=>`<li>
@@ -42,7 +42,7 @@ app.addComponent({
                 </component-dog>
                 </li>`).join('')}
             </ul>
-        `;
+        `;*/
     },
     async controller(model){
         const dogs = await Api.getDogs();
@@ -73,12 +73,15 @@ app.addComponent({
 app.addComponent({
     name: 'home',
     model:{
-        data:"Welcome to the dog app"
+        data:""
     },
     view(model){
         return `
             <h1>${model.data}</h1>`;
     },
+    async controller(model){
+        model.data = "Welcome to the dog app";
+    }
 
 })
 router.addRoute('home', '^#/home$');
